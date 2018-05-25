@@ -10,13 +10,13 @@ touch $x
 sudo rm -rf /etc/default/udhcpd
 sudo mkdir /etc/default
 sudo touch /etc/default/udhcpd
-echo "start 192.168.42.2 " >>   $x
-echo "end 192.168.42.20" >> $x
+echo "start 192.168.1.2 " >>   $x
+echo "end 192.168.1.100" >> $x
 echo "interface wlan0" >> $x
 echo "remaining yes" >> $x
 echo "opt dns 8.8.8.8 4.2.2.2" >> $x
 echo "opt subnet 255.255.255.0" >> $x
-echo "opt router 192.168.42.1" >> $x
+echo "opt router 192.168.1.1" >> $x
 echo "opt lease 864000" >> $x
 sudo mv  $x /etc/udhcpd.conf
 touch $x
@@ -28,7 +28,7 @@ echo "# -f    run in foreground" >> $x
 echo "DHCPD_OPTS=\"-S\"" >> $x
 sudo mv $x  /etc/default/udhcpd
 	#give the Pi a static IP address 
-sudo ifconfig wlan0 192.168.42.1
+sudo ifconfig wlan0 192.168.1.1
 #------------SETUP Station Interface for Rt5370-------------------------------------
 touch $x
 sudo cp  /etc/network/interfaces /etc/network/interfaces.bk
@@ -60,7 +60,7 @@ echo "auto eth0" >> $x
 echo "iface eth0 inet dhcp" >> $x
 echo "" >> $x
 echo "iface wlan0 inet static" >> $x
-echo "    address 192.168.42.1" >> $x
+echo "    address 192.168.1.1" >> $x
 echo "    netmask 255.255.255.0" >> $x
 echo "    wireless-power off" >> $x
 echo "" >> $x
@@ -78,8 +78,8 @@ sudo touch /etc/wpa_supplicant/wpa_supplicant.conf
 echo "ctrl_interface=/var/run/wpa_supplicant" >> $x
 echo "update_config=1" >> $x
 echo "network={" >> $x
-echo "        ssid=\"Robotbase\"" >> $x
-echo "        psk=\"Do@nket201234\"" >> $x
+echo "        ssid=\"API3_AP1\"" >> $x
+echo "        psk=\"ohood1\"" >> $x
 echo "}" >> $x
 sudo mv $x /etc/wpa_supplicant/wpa_supplicant.conf
 
